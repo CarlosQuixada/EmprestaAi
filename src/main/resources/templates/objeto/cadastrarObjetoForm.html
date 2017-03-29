@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+	xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+>
+
+<head>
+	<link href="/webjars/materializecss/0.97.7/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<title>Empresta Aí</title>
+</head>
+
+<body>
+
+	<h2 class="blue-text light center">Cadastrar Objetos</h2>
+	<form th:action="@{/cadastrarObjeto}" method="post">
+		<div class="row">
+		  <div class="row">
+                    <div class="input-field col s8">
+                       <input id="nome" type="text" name="nome"/>
+                		<label for="nome">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <textarea id="descricao" class="materialize-textarea" name="descricao"></textarea>
+          				<label for="descricao">Descrição</label>
+                    </div>
+                </div>
+  
+            	<div class="row col s8">
+            		<button class="btn waves-effect waves-light center" type="submit" name="action">Cadastrar
+            		</button>
+            	</div>
+          </div>
+	</form>
+
+<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+<script src="/webjars/materializecss/0.97.7/js/materialize.js"></script>
+</body>
+
+</html>

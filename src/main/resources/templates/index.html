@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+	xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+>
+
+<head>
+	<link href="/webjars/materializecss/0.97.7/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<title>Empresta Aí</title>
+</head>
+
+<body>
+	<h1 class="header center blue-text">Empresta Aí</h1> 
+	<h5 class="header center col s12 light">Sistema de Controle de Objetos Emprestados</h5>
+	
+	<div class="row center">
+		<a href="#modalLogin" data-target="modalLogin" class="btn-large waves-effect waves-light teal modal-trigger">Logar</a>
+        <a th:href="@{/cadastrarUsuarioForm}" class="btn-large waves-effect waves-light teal">Cadastrar Usuário</a>
+	</div>
+	
+  <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <h4>Logar</h4>
+            <form class="col s12" th:action="@{/login}" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                       <input id="nome" type="text" class="validate" name="nome" />
+                <label for="nome">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="senha" type="password" class="validate" name="senha" />
+                        <label for="senha">Senha</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+            <a class=" modal-action modal-close btn waves-effect waves-light red">Cancelar</a>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            </button>
+        </div>
+            </form>
+
+        </div>
+        
+</div>
+
+<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+<script src="/webjars/materializecss/0.97.7/js/materialize.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+
+        	  $('.modal-trigger').leanModal({
+        	      opacity: 0, // Opacity of modal background
+        	    }
+        	  );
+        	      
+        	      
+        });
+    </script>
+</body>
+</html>

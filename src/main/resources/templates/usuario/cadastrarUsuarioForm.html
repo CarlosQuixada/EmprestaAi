@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html
+	xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+>
+
+<head>
+	<link href="/webjars/materializecss/0.97.7/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<title>Empresta Aí</title>
+</head>
+
+<body>
+
+	<h2 class="blue-text light center">Cadastrar Usuário</h2>
+	<form th:action="@{/cadastrarUsuario}" th:object="${usuario}" method="post">
+		<div class="row">
+		  <div class="row">
+                    <div class="input-field col s8">
+                       <input id="nome" type="text" th:field="*{nome}"/>
+                		<label for="nome">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="email" type="text" th:field="*{email}"/>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="endereco" type="text" th:field="*{endereco}"/>
+                        <label for="endereco">Endereço</label>
+                    </div>
+                </div>
+                <div class="row">                	
+                    <div class="input-field col s8">
+                        <input id="telefone" type="text" th:field="*{telefone}"/>
+                        <label for="telefone">Telefone</label>
+                    </div>
+                </div>
+                <div class="row">
+              
+                    	<div class="input-field col s8">
+                        	Data de Nascimento
+                        	<input id="dataNascimento" type="date" class="datepicker" th:field="*{dataNascimento}"/>
+                    	</div>
+                	
+                </div>
+                 <div class="row">
+                 	
+                   		<div class="input-field col s8">
+                        	<input id="senha" type="password" th:field="*{senha}"/>
+                        	<label for="senha">Senha</label>
+                    	</div>
+                	
+                </div>
+            	<div class="row col s8">
+            		<button class="btn waves-effect waves-light center" type="submit" name="action">Cadastrar
+            		</button>
+            	</div>
+          </div>
+	</form>
+
+<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+<script src="/webjars/materializecss/0.97.7/js/materialize.js"></script>
+<script>
+$(document).ready(function() {
+	$('.datepicker').pickadate({
+	    selectMonths: true, // Creates a dropdown to control month
+	    selectYears: 100 // Creates a dropdown of 15 years to control year
+	  });
+  });
+</script>
+</body>
+
+</html>
