@@ -16,7 +16,7 @@ public class Objeto {
 	private String nome;
 	private boolean emprestado = false;
 	@ManyToOne(optional=false)
-	@JoinColumn(name="USU_ID",referencedColumnName="USU_ID")
+	@JoinColumn(referencedColumnName="USU_ID")
 	private Usuario usuario;
 	
 	@ManyToOne

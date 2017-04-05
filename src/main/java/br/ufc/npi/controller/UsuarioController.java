@@ -59,8 +59,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value="/verObjetos/{idUsuario}", method=RequestMethod.GET)
-	public String verObjetos(@PathVariable Integer idUsuario,Model model){
-		Usuario usuario = usuarioService.buscarUsuario(idUsuario);
+	public String verObjetos(@PathVariable("idUsuario") Usuario usuario,Model model){
 		model.addAttribute("usuario", usuario);
 		return "objeto/verObjeto";
 	}
