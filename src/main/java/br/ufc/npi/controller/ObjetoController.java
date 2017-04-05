@@ -39,8 +39,7 @@ public class ObjetoController {
 	@RequestMapping(value="/cadastrarObjeto")
 	public String cadastrarObjeto(HttpSession session,Objeto objeto){
 		Usuario usu = (Usuario) session.getAttribute("usuario_logado");
-		objeto.setUsuario(usu);
-		objetoService.cadastrarObjeto(objeto);
+		objetoService.cadastrarObjeto(objeto,usu);
 		return "home";
 	}
 	
@@ -52,15 +51,14 @@ public class ObjetoController {
 		obj.setUsuarioEmp(usuario);
 		obj.setEmprestado(true);
 		
-		//EmailBuilder emailBuilder = new EmailBuilder(usuario.getNome()+"- Empresta Aí",usuario.getEmail(),"Teste",obj.getUsuario().getEmail(), "Message Body");
-		EmailBuilder emailBuilder = new EmailBuilder("CHUPA KURIRAS",usuario.getEmail(),"APRENDE A ENVIAR EMAIL BIXO FULERAGEM SEU BAIOTOLA","robson_cn1995@hotmail.com", "DEPOIS TE ENSINO A MANDAR EMAIL È BEM FACIM");
+		EmailBuilder emailBuilder = new EmailBuilder(usuario.getNome()+"- Empresta Aí",usuario.getEmail(),"Teste",obj.getUsuario().getEmail(), "Message Body");
 		
 		Email email = new Email(emailBuilder);
 		
 
 		service.sendEmail(email);
 		
-		objetoService.cadastrarObjeto(obj);
+		objetoService.updateObjeto(obj);
 		session.setAttribute("usuario_logado", usuario);	
 		return "home";
 	}
@@ -75,15 +73,11 @@ public class ObjetoController {
 	}
 	
 	@RequestMapping(value="/devolverObjetos/{idObjeto}",method=RequestMethod.GET)
-	public String devolverObjetos(@PathVariable Integer idObjeto,HttpSession session){
-		Objeto objeto = objetoService.buscarObjeto(idObjeto);
+	public String devolverObjetos(@PathVariable("idObjeto") Objeto objeto){
 		objeto.setEmprestado(false);
 		objeto.setUsuarioEmp(null);
 		
-		Usuario usuario = (Usuario) session.getAttribute("usuario_logado");
-		
-		objetoService.cadastrarObjeto(objeto);
-		session.setAttribute("usuario_logado", usuario);
+		objetoService.updateObjeto(objeto);
 		
 		return "home";
 	}
